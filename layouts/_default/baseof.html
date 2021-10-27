@@ -1,11 +1,50 @@
+<!-- Hugo generated
 <!DOCTYPE html>
 <html>
-    {{- partial "head.html" . -}}
-    <body>
-        {{- partial "header.html" . -}}
-        <div id="content">
+{{- partial "head.html" . -}}
+<body>
+    {{- partial "header.html" . -}}
+    <div id="content">
         {{- block "main" . }}{{- end }}
+    </div>
+    {{- partial "footer.html" . -}}
+</body>
+</html>
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="{{@site.locale}}">
+
+<head>
+    {{- partial "head.html" . -}}
+    {{ghost_head}}
+</head>
+
+<body class="{{body_class}}{{{block " body_class"}}}">
+    {{- partial "footer.html" . -}}
+
+    <div class="site">
+        {{- partial "header.html" . -}}
+        {{#is "home"}}
+        {{- partial "cover.html" . -}}
+        {{- partial "featured.html" . -}}
+        {{/is}}
+        <div class="site-content">
+            {{{body}}}
         </div>
         {{- partial "footer.html" . -}}
-    </body>
+        {{- partial "modal.html" . -}}
+        {{- partial "pswp.html" . -}}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous">
+        </script>
+    <script src="{{asset " built/main.min.js"}}"></script>
+
+    {{ghost_foot}}
+</body>
+
 </html>
